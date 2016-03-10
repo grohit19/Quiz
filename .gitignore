@@ -1,0 +1,85 @@
+<html>
+<head>
+
+<script>
+
+function Question(qno,qdesc,o1,o2,o3,o4,ans){
+this.qno=qno;
+this.qdesc=qdesc;
+this.o1=o1;
+this.o2=o2;
+this.o3=o3;
+this.o4=o4;
+this.ans = ans;
+}
+
+var questions = new Array();
+questions[0] = new Question(1,"Where is T-hub ?","Banglore","Hyderabad","Delhi","Gurgoan",2);
+
+questions[1] = new Question(2,"Hyderabad is located in ?","Telangana","Andhra pradesh","Tamilnadu","Kerala",1);
+
+questions[2] = new Question(3,"What is JQuery?","Html component ","Web application","Programming laungage","All of the above",3);
+
+function displayQuestions(){
+
+var text = "";
+
+for(i=0;i<questions.length;i++){
+
+text = text + questions[i].qdesc+" <br>";
+text = text + "<input type='radio' name='"+questions[i].qno+"' value='1'>"+questions[i].o1+" <br>";
+text = text + "<input type='radio' name='"+questions[i].qno+"' value='2'>"+questions[i].o2+" <br>";
+text = text + "<input type='radio' name='"+questions[i].qno+"' value='3'>"+questions[i].o3+" <br>";
+text = text + "<input type='radio' name='"+questions[i].qno+"' value='4'>"+questions[i].o4+" <br><br>";
+
+}
+
+text = text + "<button onclick='calculateScore()'> SUBMIT </button>"
+
+
+document.getElementById("quiz").innerHTML = text;
+}
+
+function calculateScore(){
+
+var count = 0;
+var radioBoxes = document.getElementsByTagName("input");
+
+
+for(i=0;i<questions.length;i++){
+
+	for(j=0;j<radioBoxes.length;j++){
+
+		if(radioBoxes[j].type == 'radio'){
+
+if(radioBoxes[j].name == questions[i].qno){
+	if(radioBoxes[j].checked == true){
+		if(radioBoxes[j].value == questions[i].ans){
+			count++;
+		}
+	}
+}
+
+		}
+
+	}	
+}
+alert(count+" / "+questions.length);
+}
+
+
+
+</script>
+
+</head>
+<body>
+
+<div id="quiz">
+
+<button onclick="displayQuestions()"> Take Test </button>
+
+ </div>
+
+
+</body>
+</html>
