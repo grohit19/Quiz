@@ -26,7 +26,7 @@ var text = "";
 
 for(i=0;i<questions.length;i++){
 
-text = text + questions[i].qdesc+" <br>";
+text = text + "<h4>"+questions[i].qdesc+"</h4>"+" <br>";
 text = text + "<input type='radio' name='"+questions[i].qno+"' value='1'>"+questions[i].o1+" <br>";
 text = text + "<input type='radio' name='"+questions[i].qno+"' value='2'>"+questions[i].o2+" <br>";
 text = text + "<input type='radio' name='"+questions[i].qno+"' value='3'>"+questions[i].o3+" <br>";
@@ -42,7 +42,7 @@ document.getElementById("quiz").innerHTML = text;
 
 function calculateScore(){
 
-var count = 0;
+var score = 0;
 var radioBoxes = document.getElementsByTagName("input");
 
 
@@ -52,19 +52,19 @@ for(i=0;i<questions.length;i++){
 
 		if(radioBoxes[j].type == 'radio'){
 
-if(radioBoxes[j].name == questions[i].qno){
-	if(radioBoxes[j].checked == true){
-		if(radioBoxes[j].value == questions[i].ans){
-			count++;
-		}
-	}
-}
+			if(radioBoxes[j].name == questions[i].qno){
+				if(radioBoxes[j].checked == true){
+					if(radioBoxes[j].value == questions[i].ans){
+						score++;
+					}
+				}
+			}
 
 		}
 
 	}	
 }
-alert(count+" / "+questions.length);
+alert(score+" / "+questions.length);
 }
 
 
@@ -75,7 +75,7 @@ alert(count+" / "+questions.length);
 <body>
 
 <div id="quiz">
-
+	
 <button onclick="displayQuestions()"> Take Test </button>
 
  </div>
