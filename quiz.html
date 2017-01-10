@@ -42,7 +42,7 @@ document.getElementById("quiz").innerHTML = text;
 
 function calculateScore(){
 
-var count = 0;
+var score = 0;
 var radioBoxes = document.getElementsByTagName("input");
 
 
@@ -55,7 +55,7 @@ for(i=0;i<questions.length;i++){
 if(radioBoxes[j].name == questions[i].qno){
 	if(radioBoxes[j].checked == true){
 		if(radioBoxes[j].value == questions[i].ans){
-			count++;
+			score++;
 		}
 	}
 }
@@ -64,7 +64,7 @@ if(radioBoxes[j].name == questions[i].qno){
 
 	}	
 }
-alert(count+" / "+questions.length);
+alert(score+" / "+questions.length);
 }
 
 
